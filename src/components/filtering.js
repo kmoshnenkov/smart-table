@@ -11,10 +11,19 @@ export function initFiltering(elements) {
     }
 
     const applyFiltering = (query, state, action) => {
+
         // код с обработкой очистки поля
+        document.querySelectorAll('button[name="clear"]').forEach(
+            (element) => {
+                element.addEventListener('click',
+                    (event) => {
+                        // ищем input по атрибуту-ключу data-field у кнопки сброса фильтра и очищаем его
+                        document.querySelector(`input[name="${element.dataset.field}"]`).value = ''
+                    }
+                )
+            }
+        );
 
-
-        // @todo: #4.5 — отфильтровать данные, используя компаратор
         const filter = {};
         Object.keys(elements).forEach(key => {
             if (elements[key]) {

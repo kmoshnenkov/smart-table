@@ -24,7 +24,7 @@ function collectState() {
     const state = processFormData(new FormData(sampleTable.container));
 
     const rowsPerPage = parseInt(state.rowsPerPage);    // приведём количество страниц к числу
-    const page = parseInt(state.page ?? 1);                // номер страницы по умолчанию 1 и тоже число
+    const page = parseInt(state.page ?? 1);             // номер страницы по умолчанию 1 и тоже число
 
     return {                                            // расширьте существующий return вот так
         ...state,
@@ -63,7 +63,7 @@ const sampleTable = initTable({
 const applySearching = initSearching(sampleTable.search.elements.search.name);
 
 const applySorting = initSorting([        // Нам нужно передать сюда массив элементов, которые вызывают сортировку, чтобы изменять их визуальное представление
-    sampleTable.header.elements.sortByDate,
+    sampleTable.header.elements.sortByDate,   
     sampleTable.header.elements.sortByTotal
 ]);
 
