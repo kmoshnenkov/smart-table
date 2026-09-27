@@ -1,7 +1,6 @@
 import { getPages } from "../lib/utils.js";
 
 export const initPagination = ({ pages, fromRow, toRow, totalRows }, createPage) => {
-
     const pageTemplate = pages.firstElementChild.cloneNode(true);    // в качестве шаблона берём первый элемент из контейнера со страницами
     pages.firstElementChild.remove();
 
