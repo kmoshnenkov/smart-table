@@ -13,16 +13,12 @@ export function initFiltering(elements) {
     const applyFiltering = (query, state, action) => {
 
         // код с обработкой очистки поля
-        document.querySelectorAll('button[name="clear"]').forEach(
-            (element) => {
-                element.addEventListener('click',
-                    (event) => {
-                        // ищем input по атрибуту-ключу data-field у кнопки сброса фильтра и очищаем его
-                        document.querySelector(`input[name="${element.dataset.field}"]`).value = ''
-                    }
-                )
-            }
-        );
+        if (action?.name === 'clear') {
+            const fieldName = action.dataset.field;
+            action.parentElement.querySelector(`input[name=${fieldName}]`).value = ''
+            state[fieldName] = '';
+        }
+        
 
         const filter = {};
         Object.keys(elements).forEach(key => {
